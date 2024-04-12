@@ -109,6 +109,7 @@ public class UmsAdminController {
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult logout() {
+//       todo 注销,删除token adminService.logout(token);
         return CommonResult.success(null);
     }
 

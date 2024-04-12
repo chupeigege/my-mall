@@ -2,6 +2,7 @@ package com.macro.mall.security.config;
 
 import com.macro.mall.security.component.*;
 import com.macro.mall.security.util.JwtTokenUtil;
+import com.macro.mall.security.util.RedisTokenUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +33,11 @@ public class CommonSecurityConfig {
     }
 
     @Bean
+    public RedisTokenUtil redisTokenUtil() {
+        return new RedisTokenUtil();
+    }
+
+    @Bean
     public RestfulAccessDeniedHandler restfulAccessDeniedHandler() {
         return new RestfulAccessDeniedHandler();
     }
@@ -44,6 +50,11 @@ public class CommonSecurityConfig {
     @Bean
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
         return new JwtAuthenticationTokenFilter();
+    }
+
+    @Bean
+    public RedisAuthenticationTokenFilter redisAuthenticationTokenFilter(){
+        return new RedisAuthenticationTokenFilter();
     }
 
     @ConditionalOnBean(name = "dynamicSecurityService")
